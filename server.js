@@ -7,11 +7,15 @@ const fs = require('fs');
 
 // Load environment variables
 dotenv.config();
-
+const PORT = process.env.PORT || 5000;
+const app = express();
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 // Connect to MongoDB
 connectDB();
 
-const app = express();
+
 
 // Create uploads directory if it doesn't exist
 const uploadsDir = path.join(__dirname, 'uploads');
@@ -30,4 +34,5 @@ app.use('/api/services', require('./routes/serviceRoutes'));
 app.use('/api/bookings', require('./routes/bookingRoutes'));
 
 // Export the app for Vercel
+
 module.exports = app;
