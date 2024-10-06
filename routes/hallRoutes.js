@@ -1,9 +1,17 @@
 const express = require('express');
-const { getHalls, createHall,getHallById } = require('../controllers/hallController');
 const router = express.Router();
+const {
+  getHalls,
+  getHallById,
+  createHall,
+  updateHall,
+  deleteHall
+} = require('../controllers/hallController');
 
 router.get('/', getHalls);
+router.get('/:id', getHallById);
 router.post('/', createHall);
-router.get('/:id', getHallById); 
+router.put('/:id', updateHall); // Update hall
+router.delete('/:id', deleteHall); // Delete hall
 
 module.exports = router;
